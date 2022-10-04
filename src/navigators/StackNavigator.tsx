@@ -19,7 +19,7 @@ const StackNavigator: React.FC<NativeStackScreenProps<RouteParams>> = () => {
         name={Routes.List}
         component={List}
         options={{
-          headerTitle: "Breaking Bad",
+          headerTitle: "Indozone",
           headerTitleAlign: 'center'
         }}
       />
