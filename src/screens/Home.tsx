@@ -5,11 +5,10 @@ import {getCharacter} from '../redux/reducers/CharacterReducer';
 import {Character} from '../interfaces/interfaces';
 import {Box, Heading, HStack, ScrollView, Spinner, View} from 'native-base';
 import {config} from '../utils/Config';
-import {} from 'react-native';
+import { TouchableOpacity } from 'react-native';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {NavigatorParams} from '../types/types';
 import CharacterCard from '../components/CharacterCard';
-import {TouchableOpacity} from 'react-native-gesture-handler';
 
 const Home: FC<NativeStackScreenProps<NavigatorParams>> = ({navigation}) => {
   const dispatch = useDispatch();
