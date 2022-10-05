@@ -10,15 +10,13 @@ import {Box, Center, Image, Text} from 'native-base';
 const CharacterDetails: FC<NativeStackScreenProps<NavigatorParams>> = ({
   route,
 }) => {
-  const [characterDetails, setCharacterdetails] = useState<
-    Character | undefined
-  >({});
-  const data = useSelector((state: RootState) => state.characters);
-  let {characters} = data;
+  const [characterDetails, setCharacterdetails] = useState<Character | undefined>({});
+  const characters = useSelector((state: RootState) => state.charactersReducer.characters);
+
   const [isShrinkImage, setIsShrinkImage] = useState<boolean>(false);
 
   useEffect(() => {
-    if (characters && characters) {
+    if (characters && !characterDetails) {
       setCharacterdetails(
         characters.find(
           (char: Character) => char.char_id === route.params?.itemId,

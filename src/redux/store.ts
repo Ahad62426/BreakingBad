@@ -2,7 +2,7 @@ import {combineReducers, configureStore} from '@reduxjs/toolkit';
 import CharacterReducer from './reducers/CharacterReducer';
 
 const RootReducer = combineReducers({
-  characters: CharacterReducer,
+  charactersReducer: CharacterReducer,
 });
 
 const store = configureStore({

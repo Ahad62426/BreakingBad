@@ -12,8 +12,8 @@ import CharacterCard from '../components/CharacterCard';
 
 const Home: FC<NativeStackScreenProps<NavigatorParams>> = ({navigation}) => {
   const dispatch = useDispatch();
-  const data = useSelector((state: RootState) => state.characters);
-  let {characters, isLoading} = data;
+  const characters = useSelector((state: RootState) => state.charactersReducer.characters);
+  const isLoading = useSelector((state: RootState) => state.charactersReducer.isLoading);
 
   useEffect(() => {
     let fetchCharacters = async () => {
