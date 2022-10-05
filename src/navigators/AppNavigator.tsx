@@ -1,12 +1,9 @@
 import React from 'react';
-import {
-  NavigationProp,
-  useNavigation,
-} from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+// import {NavigationProp, useNavigation} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
-import { Navigators } from '../enums/enums';
-import { NavigatorParams } from "../types/types";
+import {Navigators} from '../enums/enums';
+import {NavigatorParams} from '../types/types';
 
 import StackNavigator from './StackNavigator';
 
@@ -19,11 +16,11 @@ const AppNavigator: React.FC<any> = () => {
         name={Navigators.StackNavigator}
         component={StackNavigator}
         options={{
-          headerShown: false
+          headerShown: false,
         }}
       />
     </RootNavigator.Navigator>
-  )
-}
+  );
+};
 
-export default AppNavigator
+export default AppNavigator;

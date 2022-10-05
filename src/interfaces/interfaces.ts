@@ -5,8 +5,8 @@ export interface Character {
   occupation?: string[] | undefined;
   status?: string | undefined;
   nickname?: string | undefined;
-  appearance?: number[] | undefined
-};
+  appearance?: number[] | undefined;
+}
 
 export interface Appearance {
   label: string;

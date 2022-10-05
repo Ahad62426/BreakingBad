@@ -1,14 +1,13 @@
 import React from 'react';
 import {
   createNativeStackNavigator,
-  NativeStackScreenProps
+  NativeStackScreenProps,
 } from '@react-navigation/native-stack';
 
-import { Routes } from '../enums/enums';
-import { RouteParams } from "../types/types";
-
-import List from '../screens/List';
-import Details from '../screens/Details';
+import {Routes} from '../enums/enums';
+import {RouteParams} from '../types/types';
+import Home from '../screens/Home';
+import CharacterDetails from '../screens/CharacterDetails';
 
 const Stack = createNativeStackNavigator<RouteParams>();
 
@@ -17,19 +16,15 @@ const StackNavigator: React.FC<NativeStackScreenProps<RouteParams>> = () => {
     <Stack.Navigator initialRouteName={Routes.List}>
       <Stack.Screen
         name={Routes.List}
-        component={List}
+        component={Home}
         options={{
-          headerTitle: "Indozone",
-          headerTitleAlign: 'center'
+          headerTitle: 'Indozone',
+          headerTitleAlign: 'center',
         }}
       />
-      <Stack.Screen
-        name={Routes.Details}
-        component={Details}
-        options={({ route }) => ({ title: route.params.character.name })}
-      />
+      <Stack.Screen name={Routes.Details} component={CharacterDetails} />
     </Stack.Navigator>
-  )
-}
+  );
+};
 
-export default StackNavigator
+export default StackNavigator;

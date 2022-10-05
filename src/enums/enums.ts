@@ -1,8 +1,8 @@
 export enum Navigators {
-  StackNavigator = "StackNavigator"
+  StackNavigator = 'StackNavigator',
 }
 
 export enum Routes {
   List = 'List',
-  Details = 'Details'
+  Details = 'CharacterDetails',
 }
