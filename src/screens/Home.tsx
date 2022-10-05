@@ -1,7 +1,7 @@
 import React, {FC, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {RootState} from '../redux/store';
-import {getCharacter} from '../redux/reducers/CharacterReducer';
+import {setCharacters} from '../redux/reducers/CharacterReducer';
 import {Character} from '../interfaces/interfaces';
 import {Box, Heading, HStack, ScrollView, Spinner, View} from 'native-base';
 import {config} from '../utils/Config';
@@ -19,7 +19,7 @@ const Home: FC<NativeStackScreenProps<NavigatorParams>> = ({navigation}) => {
     let fetchCharacters = async () => {
       let res = await fetch(`${config.API_URL}/characters`);
       let charactersData = await res.json();
-      dispatch(getCharacter(charactersData));
+      dispatch(setCharacters(charactersData));
     };
     fetchCharacters();
   }, [dispatch]);
