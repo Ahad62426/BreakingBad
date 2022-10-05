@@ -1,7 +1,7 @@
 import React, {FC, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {RootState} from '../redux/store';
-import {setCharacters} from '../redux/reducers/CharacterReducer';
+import {setCharacters} from '../redux/reducers/charactersReducer/characters.reducer';
 import {Character} from '../interfaces/interfaces';
 import {Box, Heading, HStack, ScrollView, Spinner, View} from 'native-base';
 import {config} from '../utils/Config';

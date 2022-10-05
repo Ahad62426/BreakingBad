@@ -1,6 +1,6 @@
-import {characterInitialState} from './../../interfaces/reducerInterfaces';
+import {characterInitialState} from '../../../interfaces/reducerInterfaces';
 import {createSlice} from '@reduxjs/toolkit';
-import {Character} from '../../interfaces/interfaces';
+import {Character} from '../../../interfaces/interfaces';
 
 const initialState: characterInitialState = {
   characters: [],

@@ -1,9 +1,5 @@
-import {combineReducers, configureStore} from '@reduxjs/toolkit';
-import CharacterReducer from './reducers/CharacterReducer';
-
-const RootReducer = combineReducers({
-  charactersReducer: CharacterReducer,
-});
+import { configureStore } from "@reduxjs/toolkit";
+import RootReducer from "./reducers";
 
 const store = configureStore({
   reducer: RootReducer,
