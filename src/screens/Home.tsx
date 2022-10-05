@@ -1,27 +1,22 @@
-import React, {FC, useEffect} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
-import {RootState} from '../redux/store';
-import {setCharacters} from '../redux/reducers/charactersReducer/characters.reducer';
-import {Character} from '../interfaces/interfaces';
-import {Box, Heading, HStack, ScrollView, Spinner, View} from 'native-base';
-import {config} from '../utils/Config';
+import React, { FC, useEffect } from 'react';
+import { useAppDispatch, useAppSelector } from '../redux/hooks';
+import { RootState } from '../redux/store';
+import { fetchCharacters } from '../redux/reducers/charactersReducer/characters.thunk';
+import { getCharacters } from '../redux/reducers/charactersReducer/characters.reducer';
+import { Character } from '../interfaces/interfaces';
+import { Box, Heading, HStack, ScrollView, Spinner, View } from 'native-base';
 import { TouchableOpacity } from 'react-native';
-import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {NavigatorParams} from '../types/types';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { NavigatorParams } from '../types/types';
 import CharacterCard from '../components/CharacterCard';
 
-const Home: FC<NativeStackScreenProps<NavigatorParams>> = ({navigation}) => {
-  const dispatch = useDispatch();
-  const characters = useSelector((state: RootState) => state.charactersReducer.characters);
-  const isLoading = useSelector((state: RootState) => state.charactersReducer.isLoading);
+const Home: FC<NativeStackScreenProps<NavigatorParams>> = ({ navigation }) => {
+  const characters = useAppSelector(getCharacters);
+  const isLoading = useAppSelector((state: RootState) => state.charactersReducer.isLoading);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
-    let fetchCharacters = async () => {
-      let res = await fetch(`${config.API_URL}/characters`);
-      let charactersData = await res.json();
-      dispatch(setCharacters(charactersData));
-    };
-    fetchCharacters();
+    dispatch(fetchCharacters()).unwrap();
   }, [dispatch]);
 
   return (

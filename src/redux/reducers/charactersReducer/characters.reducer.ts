@@ -1,29 +1,34 @@
-import {characterInitialState} from '../../../interfaces/reducerInterfaces';
-import {createSlice} from '@reduxjs/toolkit';
-import {Character} from '../../../interfaces/interfaces';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { Character } from '../../../interfaces/interfaces';
+import { RootState } from '../../store';
+import { reducerName, initialState } from "./characters.initialState";
+import { fetchCharacters } from './characters.thunk';
 
-const initialState: characterInitialState = {
-  characters: [],
-  isLoading: true,
-};
 export const characterSlice = createSlice({
-  name: 'charactersReducer',
+  name: reducerName,
   initialState,
   reducers: {
-    setCharacters: (state, action) => {
-      state.characters = action.payload;
-      state.isLoading = false;
-    },
     deleteCharacter: (state, action) => {
       state.characters = state.characters.filter(
         (character: Character) => character.char_id !== action.payload.char_id,
       );
     },
   },
+  extraReducers: builder => {
+    builder.addCase(
+      fetchCharacters.fulfilled,
+      (state, action: PayloadAction<Character[]>) => {
+        state.characters = action?.payload || [];
+        state.isLoading = false
+      },
+    );
+  }
 });
 
 export const {
-  setCharacters, deleteCharacter
+  deleteCharacter
 } = characterSlice.actions;
+
+export const getCharacters = (state: RootState) => state.charactersReducer.characters
 
 export default characterSlice.reducer;
