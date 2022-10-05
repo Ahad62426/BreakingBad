@@ -16,7 +16,7 @@ const CharacterDetails: FC<NativeStackScreenProps<NavigatorParams>> = ({
   const [isShrinkImage, setIsShrinkImage] = useState<boolean>(false);
 
   useEffect(() => {
-    if (characters && !characterDetails) {
+    if (characters && characters.length) {
       setCharacterdetails(
         characters.find(
           (char: Character) => char.char_id === route.params?.itemId,

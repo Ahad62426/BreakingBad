@@ -7,7 +7,7 @@ const initialState: characterInitialState = {
   isLoading: true,
 };
 export const characterSlice = createSlice({
-  name: 'chararters',
+  name: 'charactersReducer',
   initialState,
   reducers: {
     setCharacters: (state, action) => {
