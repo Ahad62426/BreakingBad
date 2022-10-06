@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
 import { RootState } from '../redux/store';
 import { fetchCharacters } from '../redux/reducers/charactersReducer/characters.thunk';
@@ -11,12 +11,16 @@ import { NavigatorParams } from '../types/types';
 import CharacterCard from '../components/CharacterCard';
 
 const Home: FC<NativeStackScreenProps<NavigatorParams>> = ({ navigation }) => {
+
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+
   const characters = useAppSelector(getCharacters);
-  const isLoading = useAppSelector((state: RootState) => state.charactersReducer.isLoading);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(fetchCharacters()).unwrap();
+    dispatch(fetchCharacters()).unwrap()
+    .finally(() => setIsLoading(false))
+    .catch(() => setIsLoading(false));
   }, [dispatch]);
 
   return (

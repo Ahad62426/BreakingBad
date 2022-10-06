@@ -4,6 +4,7 @@ import {useSelector} from 'react-redux';
 import {RootState} from '../redux/store';
 import {Character} from '../interfaces/interfaces';
 import {NavigatorParams} from '../types/types';
+import { getCharacters } from '../redux/reducers/charactersReducer/characters.reducer';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {Box, Center, Image, Text} from 'native-base';
 
@@ -11,7 +12,7 @@ const CharacterDetails: FC<NativeStackScreenProps<NavigatorParams>> = ({
   route,
 }) => {
   const [characterDetails, setCharacterdetails] = useState<Character | undefined>({});
-  const characters = useSelector((state: RootState) => state.charactersReducer.characters);
+  const characters = useSelector(getCharacters);
 
   const [isShrinkImage, setIsShrinkImage] = useState<boolean>(false);
 
